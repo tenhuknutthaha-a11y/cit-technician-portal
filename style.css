@@ -309,3 +309,153 @@ footer span {
   }
 }
 
+/* =================================
+   CIT MODERN CORPORATE BLUE THEME
+================================= */
+
+:root {
+  --cit-navy: #123B70;
+  --cit-blue: #1769C2;
+  --cit-sky: #4DA3F5;
+  --cit-light: #EAF3FC;
+  --cit-text: #18324F;
+}
+
+/* พื้นหลังเว็บไซต์ */
+body {
+  background: #F3F7FC;
+  color: var(--cit-text);
+}
+
+/* ส่วนหัว */
+.hero {
+  background: linear-gradient(135deg, #102F59, #1769C2 65%, #368FE0);
+  color: #FFFFFF;
+}
+
+/* โลโก้ CIT */
+.brand-mark {
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #FFFFFF;
+}
+
+/* สถานะ TECHNICIAN */
+.status {
+  color: #FFFFFF;
+}
+
+.status i {
+  background: #60E6AE;
+  box-shadow: 0 0 10px rgba(96,230,174,.7);
+}
+
+/* หัวข้อ */
+.section-kicker {
+  color: var(--cit-blue);
+}
+
+/* การ์ดเมนู */
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E0EAF5;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(25,76,130,.07);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(23,105,194,.16);
+  border-color: #A9D0F5;
+}
+
+/* จัดไอคอนทุกเมนูให้เท่ากัน */
+.icon {
+  width: 58px !important;
+  height: 58px !important;
+  min-width: 58px;
+  min-height: 58px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 16px;
+  font-size: 27px !important;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+/* สีพื้นหลังไอคอนให้เป็นโทนน้ำเงินทั้งหมด */
+.icon-green,
+.icon-blue,
+.icon-amber,
+.icon-red,
+.icon-dark {
+  background: #EAF3FC !important;
+  color: #1769C2 !important;
+}
+
+/* ชื่อเมนู */
+.card-title {
+  color: #153D68;
+  font-weight: 700;
+}
+
+/* คำอธิบาย */
+.card-desc {
+  color: #71849A;
+}
+
+/* ลิงก์ท้ายการ์ด */
+.card-foot {
+  color: var(--cit-blue);
+}
+
+/* ปุ่มติดตั้ง */
+.install-btn {
+  background: var(--cit-blue);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  transition: background .2s ease;
+}
+
+.install-btn:hover {
+  background: var(--cit-navy);
+}
+
+/* กล่องคำแนะนำ */
+.help {
+  background: #EAF3FC;
+  border: 1px solid #D5E6F8;
+  border-radius: 16px;
+}
+
+.help-icon {
+  background: var(--cit-blue);
+  color: #FFFFFF;
+}
+
+/* Footer */
+footer {
+  background: #102F59;
+  color: #FFFFFF;
+}
+
+/* รองรับการแสดงผลบนมือถือ */
+@media (max-width: 600px) {
+  .icon {
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px;
+    min-height: 54px;
+    font-size: 25px !important;
+  }
+
+  .card {
+    border-radius: 15px;
+  }
+}
+
+
