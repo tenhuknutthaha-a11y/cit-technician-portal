@@ -1,1 +1,160 @@
 
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b46">
+<meta name="description" content="ระบบเอกสารและงานบริการสำหรับช่าง CIT">
+<title>CIT Technician</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #edf3f8;
+  color: #183047;
+}
+
+header {
+  background: linear-gradient(135deg,#102b46,#17618b);
+  color: white;
+  padding: 35px 22px;
+  border-radius: 0 0 25px 25px;
+}
+
+.brand {
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: .8;
+}
+
+h1 {
+  margin: 18px 0 8px;
+  font-size: 29px;
+}
+
+header p {
+  color: #d6e8f5;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 0 18px;
+}
+
+.section-title {
+  margin-bottom: 18px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 15px;
+}
+
+.card {
+  background: white;
+  padding: 23px 18px;
+  border-radius: 17px;
+  text-decoration: none;
+  color: #183047;
+  box-shadow: 0 5px 18px #18304712;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px 22px #18304720;
+}
+
+.icon {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.card h2 {
+  font-size: 17px;
+  margin: 0 0 7px;
+}
+
+.card p {
+  color: #718294;
+  font-size: 13px;
+  margin: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 35px 15px;
+  color: #7c8b99;
+  font-size: 11px;
+}
+
+@media(max-width:550px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">CREATIVE INNOVATION TECHNOLOGY</div>
+  <h1>🔧 CIT Technician</h1>
+  <p>ระบบเอกสารและงานบริการสำหรับช่าง</p>
+</header>
+
+<main class="container">
+
+  <div class="section-title">
+    <h2>เมนูสำหรับช่าง</h2>
+    <p>เลือกบริการที่ต้องการใช้งาน</p>
+  </div>
+
+  <section class="cards">
+
+    <a class="card"
+       href="https://docs.google.com/forms/d/e/1FAIpQLSds7ZZmtMvBXN-AFuH0RIVGrhw3p2vGXr4zHj_ggMARlRWL5A/viewform?usp=sharing"
+       target="_blank" rel="noopener">
+      <div class="icon">🛠️</div>
+      <h2>เอกสารทำ PM</h2>
+      <p>Preventive Maintenance</p>
+    </a>
+
+    <a class="card"
+       href="https://drive.google.com/drive/folders/1Iu1eX9kAYmLXPEU52ql0tqyxAZVcmRX7?usp=drive_link"
+       target="_blank" rel="noopener">
+      <div class="icon">📄</div>
+      <h2>PDF PM</h2>
+      <p>คู่มือและเอกสาร PM</p>
+    </a>
+
+    <a class="card"
+       href="https://cit-service-calendar.netlify.app/"
+       target="_blank" rel="noopener">
+      <div class="icon">📅</div>
+      <h2>ปฏิทินงานบริการ CIT</h2>
+      <p>CIT Service Calendar</p>
+    </a>
+
+  </section>
+</main>
+
+<footer>
+  CREATIVE INNOVATION TECHNOLOGY CO., LTD.
+  <br><br>
+  CIT TECHNICIAN PORTAL
+</footer>
+
+</body>
+</html>
+
