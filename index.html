@@ -1,415 +1,89 @@
-
-<!DOCTYPE html>
+```html
+<!doctype html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071426">
-<title>CIT FUTURE PRO | Technician Portal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg:#071426;
-  --surface:#102943;
-  --primary:#1677FF;
-  --cyan:#00D9FF;
-  --text:#F1F7FF;
-  --muted:#9BB2CA;
-  --border:rgba(91,174,255,.20);
-  --success:#00E6A8;
-  --radius:20px;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;min-height:100vh;
-  font-family:"Noto Sans Thai","Segoe UI",sans-serif;
-  background:
-    radial-gradient(ellipse at 10% 0%,#123C6A 0%,transparent 35%),
-    radial-gradient(ellipse at 90% 45%,#0C2850 0%,transparent 35%),
-    var(--bg);
-  color:var(--text);
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;
-  opacity:.25;
-  background-image:
-    linear-gradient(rgba(90,169,255,.055) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(90,169,255,.055) 1px,transparent 1px);
-  background-size:40px 40px;
-}
-header{
-  position:relative;
-  padding:25px 6% 55px;
-  background:linear-gradient(120deg,#08182D,#103D70 60%,#087CB8);
-  border-bottom:1px solid rgba(57,191,255,.45);
-  border-radius:0 0 30px 30px;
-  box-shadow:0 15px 45px rgba(0,12,35,.4);
-}
-.topline{display:flex;justify-content:space-between;align-items:center;gap:15px}
-.brand{display:flex;align-items:center;gap:13px}
-.brand-mark{
-  width:50px;height:50px;display:grid;place-items:center;
-  background:linear-gradient(145deg,#1677FF,#00CFFF);
-  border:1px solid #9AEAFF;border-radius:14px;
-  font-weight:900;box-shadow:0 0 24px #00bfff66;
-}
-.brand-name{font-weight:900;font-size:14px;letter-spacing:1px}
-.brand-sub{font-size:10px;color:#B8DFFF;letter-spacing:1px}
-.status{
-  border:1px solid #00d9ff66;background:#00d9ff12;
-  padding:8px 13px;border-radius:30px;font-size:11px;color:#B8F5FF;
-}
-.status i{
-  display:inline-block;width:8px;height:8px;
-  background:var(--success);border-radius:50%;margin-right:7px;
-}
-.hero-copy{margin-top:45px;max-width:700px}
-.eyebrow{color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:2px}
-h1{font-size:clamp(28px,5vw,45px);margin:10px 0;line-height:1.35}
-.hero-copy p{color:#C0D9F2;font-size:14px;line-height:1.8}
-.container{width:min(1050px,90%);margin:-22px auto 50px;position:relative}
-.welcome{margin-bottom:25px}
-.kicker{color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:2px}
-h2{font-size:24px;margin:8px 0}
-.muted{color:var(--muted);font-size:14px}
-.panel{
-  background:linear-gradient(145deg,rgba(20,43,70,.97),rgba(9,28,50,.98));
-  border:1px solid var(--border);border-radius:var(--radius);
-  padding:25px;box-shadow:0 12px 35px #0005;
-}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
-.role{
-  text-align:left;color:var(--text);cursor:pointer;
-  background:linear-gradient(145deg,#142f4d,#0b1c32);
-  border:1px solid var(--border);border-radius:18px;
-  padding:25px;min-height:170px;transition:.2s;
-  font-family:inherit;
-}
-.role:hover,.card:hover{
-  transform:translateY(-4px);border-color:var(--cyan);
-  box-shadow:0 0 25px #00bfff22;
-}
-.icon{
-  width:55px;height:55px;display:grid;place-items:center;
-  border-radius:15px;margin-bottom:15px;
-  background:#1677ff30;border:1px solid #47cfff66;
-  font-size:27px;
-}
-.role strong{display:block;font-size:19px}
-.role small{display:block;color:var(--muted);margin-top:6px}
-.form-area{max-width:430px;margin:auto}
-input{
-  width:100%;padding:14px 15px;margin:10px 0;
-  border:1px solid #3982b766;border-radius:12px;
-  background:#071a30;color:white;font:inherit;font-size:16px;
-}
-input:focus{outline:2px solid var(--cyan)}
-.btn{
-  width:100%;padding:13px;border:0;border-radius:12px;
-  background:linear-gradient(110deg,#1677FF,#00AFFF);
-  color:white;font:inherit;font-weight:800;cursor:pointer;
-  margin-top:8px;
-}
-.btn.secondary{background:#193957;border:1px solid var(--border)}
-.hidden{display:none!important}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.card{
-  display:flex;flex-direction:column;min-height:190px;
-  padding:20px;text-decoration:none;color:var(--text);
-  background:linear-gradient(145deg,#142b46,#091c32);
-  border:1px solid var(--border);border-radius:18px;
-  transition:.2s;
-}
-.card .icon{flex-shrink:0}
-.card strong{font-size:15px;line-height:1.6}
-.card small{color:var(--muted);margin-top:5px;line-height:1.6}
-.card span{margin-top:auto;padding-top:16px;color:var(--cyan);font-size:12px;font-weight:800}
-.help{
-  margin-top:22px;padding:18px;border:1px solid var(--border);
-  border-radius:16px;background:#102a45;color:#b8cce0;
-  font-size:13px;line-height:1.8;
-}
-footer{
-  padding:25px 6%;background:#050F1D;
-  border-top:1px solid #267cc455;
-  display:flex;justify-content:space-between;gap:12px;
-  flex-wrap:wrap;font-size:12px;color:#D8E9FA;
-}
-footer span{color:var(--cyan)}
-.back{color:var(--cyan);cursor:pointer;background:none;border:0;font:inherit;margin-bottom:18px}
-@media(max-width:800px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){
-  header{padding:20px 6% 45px}
-  .grid,.cards{grid-template-columns:1fr}
-  .panel{padding:18px}
-  .role{min-height:140px}
-  .brand-name{font-size:11px}
-  .status{font-size:9px}
-  footer{flex-direction:column}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153d35">
+  <meta name="description" content="ระบบเอกสารและตรวจสอบการปฏิบัติงานแผนกช่าง">
+  <title>แผนกช่าง | CIT</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon-192.png">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-
-<header>
-  <div class="topline">
-    <div class="brand">
-      <div class="brand-mark">CIT</div>
-      <div>
-        <div class="brand-name">CREATIVE INNOVATION TECHNOLOGY</div>
-        <div class="brand-sub">FUTURE PRO • DIGITAL WORKSPACE</div>
+  <header class="hero">
+    <div class="topline">
+      <div class="brand">
+        <div class="brand-mark" aria-label="CIT logo placeholder">CIT</div>
+        <div><div class="brand-name">CREATIVE INNOVATION</div><div class="brand-sub">TECHNOLOGY CO., LTD.</div></div>
       </div>
+      <span class="status"><i></i> TECHNICIAN</span>
     </div>
-    <div class="status"><i></i>SYSTEM ONLINE</div>
-  </div>
-
-  <div class="hero-copy">
-    <div class="eyebrow">CIT DIGITAL WORKSPACE</div>
-    <h1>CIT FUTURE PRO</h1>
-    <p>ระบบศูนย์รวมข้อมูลและเครื่องมือสำหรับทีมงาน CIT<br>
-    Technology • Service • Innovation</p>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- ROLE SELECTION -->
-  <section id="rolePage">
-    <div class="welcome">
-      <div class="kicker">WELCOME TO CIT</div>
-      <h2>เลือกประเภทผู้ใช้งาน</h2>
-      <p class="muted">กรุณาเลือกช่องทางเข้าสู่ระบบ</p>
+    <div class="hero-copy">
+      <p class="eyebrow">INTERNAL SERVICE PORTAL</p>
+      <h1>ระบบงานแผนกช่าง</h1>
+      <p>ศูนย์รวมเอกสาร แบบฟอร์มตรวจสอบ และงานบำรุงรักษา</p>
     </div>
+  </header>
 
-    <div class="grid">
-      <button class="role" onclick="showLogin('admin')">
-        <div class="icon">🛡️</div>
-        <strong>ADMIN</strong>
-        <small>สำหรับผู้ดูแลระบบ</small>
-      </button>
+  <main class="container">
+    <section class="welcome">
+      <div><span class="section-kicker">QUICK ACCESS</span><h2>เลือกเมนูที่ต้องการ</h2><p>กดเพื่อเปิดเอกสารหรือแบบฟอร์มที่เกี่ยวข้อง</p></div>
+      <button id="installBtn" class="install-btn" hidden>＋ ติดตั้งบนมือถือ</button>
+    </section>
 
-      <button class="role" onclick="showLogin('tech')">
-        <div class="icon">🛠️</div>
-        <strong>TECHNICIAN</strong>
-        <small>สำหรับเจ้าหน้าที่ช่าง</small>
-      </button>
-    </div>
-
-    <div class="help">
-      <strong>INFORMATION</strong><br>
-      เลือกประเภทผู้ใช้งานให้ตรงกับสิทธิ์ของคุณ
-    </div>
-  </section>
-
-  <!-- LOGIN -->
-  <section id="loginPage" class="hidden">
-    <div class="panel form-area">
-      <button class="back" onclick="goHome()">← กลับหน้าหลัก</button>
-      <div class="kicker">SECURE ACCESS</div>
-      <h2 id="loginTitle">เข้าสู่ระบบ</h2>
-      <p class="muted" id="loginDescription"></p>
-
-      <form onsubmit="login(event)">
-        <input id="password" type="password"
-          placeholder="กรอกรหัสผ่าน" required autocomplete="current-password">
-        <button class="btn" type="submit">เข้าสู่ระบบ →</button>
-      </form>
-      <p id="error" style="color:#ff8585;font-size:13px"></p>
-    </div>
-  </section>
-
-  <!-- TECHNICIAN MENU -->
-  <section id="techPage" class="hidden">
-    <button class="back" onclick="logout()">← ออกจากระบบ</button>
-    <div class="welcome">
-      <div class="kicker">TECHNICIAN WORKSPACE</div>
-      <h2>ศูนย์รวมงานแผนกช่าง</h2>
-      <p class="muted">เลือกแบบฟอร์มหรือเอกสารที่ต้องการใช้งาน</p>
-    </div>
-
-    <div class="cards">
-      <a class="card" id="vehicleLink" href="#" target="_blank" rel="noopener">
-        <div class="icon">🚗</div>
-        <strong>Vehicle Checklist</strong>
-        <small>แบบฟอร์มตรวจสอบรถยนต์</small>
-        <span>เปิดแบบฟอร์ม →</span>
+    <section class="cards" aria-label="เมนูแผนกช่าง">
+      <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSeYTGTHUg_OSxv_eNnAuDgRADi4tAqFAxuSyDA4ZqBb2209Ow/viewform?usp=sharing&ouid=112341327912278868101" target="_blank" rel="noopener">
+        <span class="icon icon-green">🚗</span><span class="card-title">เอกสารเช็ครถ</span><span class="card-desc">Vehicle Checklist</span><span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
       </a>
 
-      <a class="card" id="uniformLink" href="#" target="_blank" rel="noopener">
-        <div class="icon">👕</div>
-        <strong>Uniform Checklist</strong>
-        <small>แบบฟอร์มตรวจสอบเครื่องแบบ</small>
-        <span>เปิดแบบฟอร์ม →</span>
+      <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLScoQ-vYuujusargwWVnCnw8kDaeKRem4leYNa9PkT_YniNaTA/viewform?usp=sharing&ouid=112341327912278868101" target="_blank" rel="noopener">
+        <span class="icon icon-blue">👕</span><span class="card-title">ตรวจการแต่งกาย</span><span class="card-desc">Uniform Checklist</span><span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
       </a>
 
-      <a class="card" id="pmFormLink" href="#" target="_blank" rel="noopener">
-        <div class="icon">📋</div>
-        <strong>PM Form</strong>
-        <small>แบบฟอร์มบันทึกงานบำรุงรักษา</small>
-        <span>เปิดแบบฟอร์ม →</span>
+      <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSds7ZZmtMvBXN-AFuH0RIVGrhw3p2vGXr4zHj_ggMARlRWL5A/viewform?usp=sharing" target="_blank" rel="noopener">
+        <span class="icon icon-amber">🛠️</span><span class="card-title">เอกสารทำ PM</span><span class="card-desc">Preventive Maintenance</span><span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
       </a>
 
-      <a class="card" id="pmPdfLink" href="#" target="_blank" rel="noopener">
-        <div class="icon">📄</div>
-        <strong>PDF PM</strong>
-        <small>เอกสาร PM สำหรับดาวน์โหลด</small>
-        <span>เปิดเอกสาร →</span>
+      <a class="card" href="https://drive.google.com/drive/folders/1Iu1eX9kAYmLXPEU52ql0tqyxAZVcmRX7?usp=drive_link" target="_blank" rel="noopener">
+        <span class="icon icon-red">📄</span><span class="card-title">PDF PM</span><span class="card-desc">คู่มือและเอกสาร PM</span><span class="card-foot">เปิด Google Drive <b>↗</b></span>
       </a>
 
-      <a class="card" id="documentLink" href="#" target="_blank" rel="noopener">
-        <div class="icon">📚</div>
-        <strong>คลังเอกสารแผนกช่าง</strong>
-        <small>ศูนย์รวมเอกสารและคู่มือ</small>
-        <span>เปิดคลังเอกสาร →</span>
+      <a class="card card-wide" href="https://drive.google.com/drive/folders/1tW5T13xAnEb-y6BBX1lzD8NepqSZha9x?usp=drive_link" target="_blank" rel="noopener">
+        <span class="icon icon-dark">📁</span><span class="card-title">คลังเอกสารแผนกช่าง</span><span class="card-desc">รวมเอกสารและไฟล์งานทั้งหมด</span><span class="card-foot">เปิด Google Drive <b>↗</b></span>
       </a>
 
-      <a class="card" href="https://cit-service-calendar.netlify.app/" target="_blank" rel="noopener">
-        <div class="icon">📅</div>
-        <strong>CIT Service Calendar</strong>
-        <small>ปฏิทินงานบริการ</small>
-        <span>เปิดปฏิทิน →</span>
+      <!-- เมนูใหม่: ปฏิทินงานบริการ CIT -->
+      <a class="card card-wide" href="https://cit-service-calendar.netlify.app/" target="_blank" rel="noopener">
+        <span class="icon icon-blue">📅</span>
+        <span class="card-title">ปฏิทินงานบริการ CIT</span>
+        <span class="card-desc">CIT Service Calendar</span>
+        <span class="card-foot">เปิดระบบปฏิทิน <b>↗</b></span>
       </a>
-    </div>
+    </section>
 
-    <div class="help">
-      <strong>TECHNICIAN SUPPORT</strong><br>
-      หากพบปัญหาการใช้งาน กรุณาติดต่อผู้ดูแลระบบ
-    </div>
-  </section>
+    <section class="help">
+      <div class="help-icon">i</div><div><strong>ใช้งานบนโทรศัพท์</strong><p>เปิดเว็บไซต์นี้ผ่าน Chrome หรือ Safari แล้วเลือก “เพิ่มไปยังหน้าจอหลัก” เพื่อสร้างไอคอนเข้าใช้งานเหมือนแอป</p></div>
+    </section>
+  </main>
 
-</main>
-
-<footer>
-  <strong>CREATIVE INNOVATION TECHNOLOGY CO., LTD.</strong>
-  <span>CIT FUTURE PRO © 2026</span>
-</footer>
-
-<script>
-/* ==========================================
-   CIT FUTURE PRO - CONFIGURATION
-   ใส่ URL จริงในช่องด้านล่าง
-========================================== */
-
-const CONFIG = {
-  ADMIN_PASSWORD: "CITSupport",
-  TECHNICIAN_PIN: "1234",
-
-  // ใส่ URL ระบบ Admin เดิม
-  ADMIN_URL: "",
-
-  // ใส่ URL Google Forms / Google Drive
-  VEHICLE_URL: "",
-  UNIFORM_URL: "",
-  PM_FORM_URL: "",
-  PM_PDF_URL: "",
-  DOCUMENT_URL: ""
-};
-
-let selectedRole = "";
-
-function showLogin(role) {
-  selectedRole = role;
-  document.getElementById("rolePage").classList.add("hidden");
-  document.getElementById("techPage").classList.add("hidden");
-  document.getElementById("loginPage").classList.remove("hidden");
-
-  document.getElementById("password").value = "";
-  document.getElementById("error").textContent = "";
-
-  if (role === "admin") {
-    document.getElementById("loginTitle").textContent = "ADMIN LOGIN";
-    document.getElementById("loginDescription").textContent =
-      "กรอกรหัสผ่านสำหรับผู้ดูแลระบบ";
-  } else {
-    document.getElementById("loginTitle").textContent = "TECHNICIAN LOGIN";
-    document.getElementById("loginDescription").textContent =
-      "กรอก PIN เพื่อเข้าสู่ระบบช่าง";
-  }
-}
-
-function login(event) {
-  event.preventDefault();
-
-  const password = document.getElementById("password").value;
-
-  if (selectedRole === "admin") {
-    if (password === CONFIG.ADMIN_PASSWORD) {
-      if (!CONFIG.ADMIN_URL) {
-        document.getElementById("error").textContent =
-          "ยังไม่ได้กำหนด URL ระบบ Admin กรุณาตั้งค่า CONFIG.ADMIN_URL";
-        return;
-      }
-      window.location.href = CONFIG.ADMIN_URL;
-      return;
+  <footer><strong>CREATIVE INNOVATION TECHNOLOGY CO., LTD.</strong><span>TECHNICIAN DOCUMENT PORTAL</span></footer>
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault(); deferredPrompt = event; installBtn.hidden = false;
+    });
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; installBtn.hidden = true;
+    });
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.warn));
     }
-  }
-
-  if (selectedRole === "tech") {
-    if (password === CONFIG.TECHNICIAN_PIN) {
-      sessionStorage.setItem("citTechnicianLogin", "true");
-      openTechnician();
-      return;
-    }
-  }
-
-  document.getElementById("error").textContent =
-    "รหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง";
-}
-
-function openTechnician() {
-  document.getElementById("rolePage").classList.add("hidden");
-  document.getElementById("loginPage").classList.add("hidden");
-  document.getElementById("techPage").classList.remove("hidden");
-
-  document.getElementById("vehicleLink").href =
-    CONFIG.VEHICLE_URL || "#";
-  document.getElementById("uniformLink").href =
-    CONFIG.UNIFORM_URL || "#";
-  document.getElementById("pmFormLink").href =
-    CONFIG.PM_FORM_URL || "#";
-  document.getElementById("pmPdfLink").href =
-    CONFIG.PM_PDF_URL || "#";
-  document.getElementById("documentLink").href =
-    CONFIG.DOCUMENT_URL || "#";
-
-  // ปิดลิงก์ที่ยังไม่ได้กำหนด ป้องกันการเปิดหน้าเปล่า
-  [
-    ["vehicleLink", CONFIG.VEHICLE_URL],
-    ["uniformLink", CONFIG.UNIFORM_URL],
-    ["pmFormLink", CONFIG.PM_FORM_URL],
-    ["pmPdfLink", CONFIG.PM_PDF_URL],
-    ["documentLink", CONFIG.DOCUMENT_URL]
-  ].forEach(([id, url]) => {
-    const link = document.getElementById(id);
-    if (!url) {
-      link.addEventListener("click", function(e) {
-        e.preventDefault();
-        alert("เมนูนี้ยังไม่ได้กำหนด URL");
-      }, {once:true});
-    }
-  });
-}
-
-function goHome() {
-  document.getElementById("loginPage").classList.add("hidden");
-  document.getElementById("techPage").classList.add("hidden");
-  document.getElementById("rolePage").classList.remove("hidden");
-  document.getElementById("password").value = "";
-}
-
-function logout() {
-  sessionStorage.removeItem("citTechnicianLogin");
-  goHome();
-}
-
-// Restore technician session in this browser tab
-if (sessionStorage.getItem("citTechnicianLogin") === "true") {
-  openTechnician();
-}
-</script>
-
+  </script>
 </body>
 </html>
+```
