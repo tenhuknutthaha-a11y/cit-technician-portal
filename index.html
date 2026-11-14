@@ -1,302 +1,605 @@
 
-<!doctype html>
-<html lang="th">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#153d35">
-  <meta name="description" content="ระบบงานแผนกช่าง CIT">
-  <title>CIT Technician</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="icon" href="./assets/icon-192.png">
-  <link rel="apple-touch-icon" href="./assets/icon-192.png">
-  <link rel="stylesheet" href="./style.css">
+/* ==================================================
+   CIT FUTURE PRO
+   Premium Dark Technology Portal
+   Version 2.0
+================================================== */
 
-  <style>
-    [hidden] { display: none !important; }
+:root {
+  --bg: #071426;
+  --bg-secondary: #0B1D33;
+  --surface: #102943;
+  --surface-light: #163653;
 
-    .pin-screen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: linear-gradient(135deg,#102b28,#153d35,#1b5a50);
-    }
+  --primary: #1677FF;
+  --primary-dark: #0B4DA8;
+  --cyan: #00D9FF;
+  --cyan-light: #8CEEFF;
 
-    .pin-card {
-      background: white;
-      width: 100%;
-      max-width: 380px;
-      padding: 35px 25px;
-      border-radius: 22px;
-      text-align: center;
-      box-shadow: 0 15px 45px #0003;
-    }
+  --text: #F1F7FF;
+  --muted: #9BB2CA;
+  --border: rgba(91, 174, 255, .20);
 
-    .pin-icon {
-      font-size: 48px;
-      margin-bottom: 12px;
-    }
+  --success: #00E6A8;
+  --white: #FFFFFF;
 
-    .pin-card h1 {
-      color: #153d35;
-      margin: 5px 0;
-      font-size: 25px;
-    }
+  --radius: 20px;
+  --shadow: 0 12px 35px rgba(0, 0, 0, .28);
+}
 
-    .pin-card p {
-      color: #718078;
-      font-size: 14px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .pin-input {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 15px;
-      margin: 20px 0 12px;
-      border: 2px solid #dce8e3;
-      border-radius: 12px;
-      font-size: 25px;
-      letter-spacing: 12px;
-      text-align: center;
-      outline: none;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    .pin-input:focus {
-      border-color: #25836b;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Noto Sans Thai", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(ellipse at 10% 0%, #123C6A 0%, transparent 35%),
+    radial-gradient(ellipse at 90% 45%, #0C2850 0%, transparent 35%),
+    var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
 
-    .pin-button {
-      width: 100%;
-      padding: 15px;
-      background: #153d35;
-      color: white;
-      border: 0;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+/* BACKGROUND TECHNOLOGY GRID */
 
-    .pin-error {
-      color: #dc3545 !important;
-      min-height: 20px;
-      font-size: 13px !important;
-    }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .35;
+  background-image:
+    linear-gradient(rgba(90,169,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,169,255,.055) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
 
-    .logout-btn {
-      border: 0;
-      border-radius: 10px;
-      padding: 10px 15px;
-      background: #e8eeee;
-      color: #153d35;
-      cursor: pointer;
-      font-weight: bold;
-    }
+body > * {
+  position: relative;
+  z-index: 1;
+}
 
-    .welcome {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-  </style>
-</head>
+/* HEADER */
 
-<body>
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, #08182D 0%, #103D70 60%, #087CB8 100%);
+  color: var(--white);
+  padding: 28px max(6%, calc((100% - 1100px) / 2)) 70px;
+  border-radius: 0 0 30px 30px;
+  border-bottom: 1px solid rgba(57,191,255,.45);
+  box-shadow: 0 15px 45px rgba(0, 12, 35, .55);
+}
 
-  <!-- หน้า PIN -->
-  <section class="pin-screen" id="pinScreen">
-    <div class="pin-card">
-      <div class="pin-icon">🔧</div>
-      <h1>CIT TECHNICIAN</h1>
-      <p>ระบบงานแผนกช่าง</p>
-      <p>กรุณากรอกรหัส PIN เพื่อเข้าใช้งาน</p>
+/* Decorative Neon Circle */
 
-      <form id="pinForm">
-        <input
-          id="pinInput"
-          class="pin-input"
-          type="password"
-          inputmode="numeric"
-          pattern="[0-9]{4}"
-          maxlength="4"
-          placeholder="••••"
-          autocomplete="off"
-          required
-        >
-        <button class="pin-button" type="submit">
-          เข้าสู่ระบบ
-        </button>
-      </form>
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  right: -100px;
+  top: -155px;
+  border: 1px solid rgba(102,223,255,.4);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 35px rgba(102,223,255,.045),
+    0 0 0 70px rgba(102,223,255,.035),
+    0 0 70px rgba(0,191,255,.18);
+  pointer-events: none;
+}
 
-      <p class="pin-error" id="pinError"></p>
-      <p style="font-size:11px;margin-top:20px;">
-        CREATIVE INNOVATION TECHNOLOGY CO., LTD.
-      </p>
-    </div>
-  </section>
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
 
-  <!-- เนื้อหาหลังผ่าน PIN -->
-  <div id="portalContent" hidden>
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
 
-    <header class="hero">
-      <div class="topline">
-        <div class="brand">
-          <div class="brand-mark">CIT</div>
-          <div>
-            <div class="brand-name">CREATIVE INNOVATION</div>
-            <div class="brand-sub">TECHNOLOGY CO., LTD.</div>
-          </div>
-        </div>
-        <span class="status"><i></i> TECHNICIAN</span>
-      </div>
+.brand-mark {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #1677FF, #00CFFF);
+  color: white;
+  font-weight: 900;
+  font-size: 17px;
+  border: 1px solid #9AEAFF;
+  border-radius: 14px;
+  box-shadow: 0 0 24px rgba(0,191,255,.4);
+}
 
-      <div class="hero-copy">
-        <p class="eyebrow">INTERNAL SERVICE PORTAL</p>
-        <h1>ระบบงานแผนกช่าง</h1>
-        <p>ศูนย์รวมเอกสารและงานบริการ CIT</p>
-      </div>
-    </header>
+.brand-name {
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: white;
+}
 
-    <main class="container">
+.brand-sub {
+  font-size: 10px;
+  opacity: .85;
+  letter-spacing: 1px;
+  color: #B8DFFF;
+}
 
-      <section class="welcome">
-        <div>
-          <span class="section-kicker">QUICK ACCESS</span>
-          <h2>เลือกเมนูที่ต้องการ</h2>
-          <p>เอกสารและระบบงานสำหรับช่าง</p>
-        </div>
+.status {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(0,217,255,.4);
+  background: rgba(0,217,255,.08);
+  padding: 9px 14px;
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  color: #B8F5FF;
+  white-space: nowrap;
+}
 
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button id="installBtn" class="install-btn" hidden>
-            ＋ ติดตั้งบนมือถือ
-          </button>
-          <button id="logoutBtn" class="logout-btn">
-            ออกจากระบบ
-          </button>
-        </div>
-      </section>
+.status i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 12px var(--success);
+}
 
-      <section class="cards" aria-label="เมนูแผนกช่าง">
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  margin-top: 55px;
+  max-width: 700px;
+}
 
-        <!-- เมนู 1 -->
-        <a class="card"
-           href="https://docs.google.com/forms/d/e/1FAIpQLSds7ZZmtMvBXN-AFuH0RIVGrhw3p2vGXr4zHj_ggMARlRWL5A/viewform?usp=sharing"
-           target="_blank" rel="noopener">
-          <span class="icon icon-amber">🛠️</span>
-          <span class="card-title">เอกสารทำ PM</span>
-          <span class="card-desc">Preventive Maintenance</span>
-          <span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
-        </a>
+.eyebrow,
+.section-kicker {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
 
-        <!-- เมนู 2 -->
-        <a class="card"
-           href="https://drive.google.com/drive/folders/1Iu1eX9kAYmLXPEU52ql0tqyxAZVcmRX7?usp=drive_link"
-           target="_blank" rel="noopener">
-          <span class="icon icon-red">📄</span>
-          <span class="card-title">PDF PM</span>
-          <span class="card-desc">คู่มือและเอกสาร PM</span>
-          <span class="card-foot">เปิด Google Drive <b>↗</b></span>
-        </a>
+.eyebrow {
+  color: var(--cyan);
+}
 
-        <!-- เมนู 3 -->
-        <a class="card card-wide"
-           href="https://cit-service-calendar.netlify.app/"
-           target="_blank" rel="noopener">
-          <span class="icon icon-blue">📅</span>
-          <span class="card-title">ปฏิทินงานบริการ CIT</span>
-          <span class="card-desc">CIT Service Calendar</span>
-          <span class="card-foot">เปิดระบบปฏิทิน <b>↗</b></span>
-        </a>
+.hero h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 900;
+  margin: 12px 0;
+  line-height: 1.3;
+  text-shadow: 0 0 25px rgba(55,191,255,.35);
+}
 
-      </section>
+.hero-copy p:last-child {
+  color: #C0D9F2;
+  font-size: 15px;
+  line-height: 1.7;
+}
 
-      <section class="help">
-        <div class="help-icon">i</div>
-        <div>
-          <strong>ใช้งานบนโทรศัพท์</strong>
-          <p>เปิดเว็บไซต์ผ่าน Chrome หรือ Safari แล้วเลือกเพิ่มไปยังหน้าจอหลัก</p>
-        </div>
-      </section>
+/* MAIN CONTAINER */
 
-    </main>
+.container {
+  width: min(1100px, 88%);
+  margin: -24px auto 55px;
+  position: relative;
+  z-index: 2;
+}
 
-    <footer>
-      <strong>CREATIVE INNOVATION TECHNOLOGY CO., LTD.</strong>
-      <span>TECHNICIAN DOCUMENT PORTAL</span>
-    </footer>
+/* WELCOME */
 
-  </div>
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 27px;
+}
 
-  <script>
-    const TECHNICIAN_PIN = "1234";
+.section-kicker {
+  color: var(--cyan);
+}
 
-    const pinScreen = document.getElementById("pinScreen");
-    const portalContent = document.getElementById("portalContent");
-    const pinForm = document.getElementById("pinForm");
-    const pinInput = document.getElementById("pinInput");
-    const pinError = document.getElementById("pinError");
+.welcome h2 {
+  margin: 8px 0;
+  font-size: 25px;
+  font-weight: 800;
+  color: white;
+}
 
-    function showPortal() {
-      pinScreen.hidden = true;
-      portalContent.hidden = false;
-    }
+.welcome p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
 
-    function showLogin() {
-      sessionStorage.removeItem("citTechnicianLogin");
-      portalContent.hidden = true;
-      pinScreen.hidden = false;
-      pinInput.value = "";
-      pinError.textContent = "";
-      pinInput.focus();
-    }
+/* INSTALL BUTTON */
 
-    if (sessionStorage.getItem("citTechnicianLogin") === "true") {
-      showPortal();
-    }
+.install-btn {
+  border: 1px solid rgba(113,223,255,.55);
+  background: linear-gradient(110deg, #1677FF, #00AFFF);
+  color: white;
+  border-radius: 13px;
+  padding: 12px 18px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 0 22px rgba(22,139,255,.28);
+  transition: .25s ease;
+}
 
-    pinForm.addEventListener("submit", function(event) {
-      event.preventDefault();
+.install-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(110deg, #00AFFF, #00D9FF);
+  box-shadow: 0 0 28px rgba(0,217,255,.4);
+}
 
-      if (pinInput.value === TECHNICIAN_PIN) {
-        sessionStorage.setItem("citTechnicianLogin", "true");
-        pinError.textContent = "";
-        showPortal();
-      } else {
-        pinError.textContent = "PIN ไม่ถูกต้อง กรุณาลองอีกครั้ง";
-        pinInput.value = "";
-        pinInput.focus();
-      }
-    });
+/* MENU GRID */
 
-    document.getElementById("logoutBtn").addEventListener("click", showLogin);
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
 
-    let deferredPrompt;
-    const installBtn = document.getElementById("installBtn");
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 215px;
+  padding: 23px;
+  background: linear-gradient(145deg,
+    rgba(20,43,70,.96),
+    rgba(9,28,50,.98));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
 
-    window.addEventListener("beforeinstallprompt", (event) => {
-      event.preventDefault();
-      deferredPrompt = event;
-      installBtn.hidden = false;
-    });
+/* Neon top line */
 
-    installBtn.addEventListener("click", async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installBtn.hidden = true;
-    });
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  width: 84%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cyan),
+    var(--primary),
+    transparent
+  );
+  opacity: .75;
+  z-index: -1;
+}
 
-    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js").catch(console.warn);
-      });
-    }
-  </script>
+/* Glow decoration */
 
-</body>
-</html>
+.card::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  right: -85px;
+  bottom: -95px;
+  border-radius: 50%;
+  background: rgba(0,191,255,.10);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,217,255,.75);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35),
+    0 0 25px rgba(0,191,255,.16);
+}
+
+.card-wide {
+  grid-column: span 3;
+  min-height: 155px;
+}
+
+/* EMOJI ICONS - SAME SIZE */
+
+.icon {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 17px;
+  margin-bottom: 17px;
+  font-size: 28px;
+  line-height: 1;
+  background: linear-gradient(
+    145deg,
+    rgba(22,119,255,.24),
+    rgba(0,217,255,.12)
+  );
+  border: 1px solid rgba(71,207,255,.4);
+  color: #7DEBFF;
+  box-shadow: 0 0 18px rgba(0,191,255,.12);
+}
+
+/* Force all old icon classes to same design */
+
+.icon-green,
+.icon-blue,
+.icon-amber,
+.icon-red,
+.icon-dark {
+  background: linear-gradient(
+    145deg,
+    rgba(22,119,255,.24),
+    rgba(0,217,255,.12)
+  );
+  border: 1px solid rgba(71,207,255,.4);
+  color: #7DEBFF;
+}
+
+/* CARD TEXT */
+
+.card-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #F3F9FF;
+  line-height: 1.5;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: #9CB2CA;
+  margin-top: 5px;
+  line-height: 1.6;
+}
+
+.card-foot {
+  margin-top: auto;
+  padding-top: 19px;
+  color: #48DFFF;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.card-foot b {
+  float: right;
+  color: var(--cyan);
+}
+
+/* HELP SECTION */
+
+.help {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 27px;
+  padding: 21px;
+  background: linear-gradient(135deg, #102A45, #0D2138);
+  border: 1px solid rgba(61,140,203,.35);
+  border-radius: 18px;
+  color: var(--text);
+  box-shadow: 0 8px 25px rgba(0,0,0,.15);
+}
+
+.help-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, #1677FF, #00CFFF);
+  color: white;
+  border-radius: 50%;
+  font-weight: 900;
+  box-shadow: 0 0 15px rgba(0,191,255,.3);
+}
+
+.help strong {
+  color: #EAF7FF;
+}
+
+.help p {
+  margin: 5px 0 0;
+  color: #A9C0D8;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 27px 6%;
+  background: #050F1D;
+  border-top: 1px solid rgba(38,124,196,.35);
+  color: #D8E9FA;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+footer strong {
+  font-weight: 800;
+}
+
+footer span {
+  color: #55DFFF;
+  letter-spacing: 1px;
+}
+
+/* ACCESSIBILITY */
+
+.card:focus-visible,
+.install-btn:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .container {
+    width: 92%;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card-wide {
+    grid-column: span 2;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 22px 6% 58px;
+  }
+
+  .hero-copy {
+    margin-top: 42px;
+  }
+
+  .container {
+    width: 90%;
+    margin-top: -18px;
+  }
+
+  .welcome {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .welcome h2 {
+    font-size: 22px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    padding: 17px;
+    min-height: 205px;
+    border-radius: 17px;
+  }
+
+  .card-wide {
+    grid-column: span 2;
+    min-height: 155px;
+  }
+
+  .icon {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    min-height: 54px;
+    font-size: 25px;
+    border-radius: 15px;
+  }
+
+  .card-title {
+    font-size: 15px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+  }
+
+  .card-foot {
+    font-size: 12px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 6%;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card-wide {
+    grid-column: span 1;
+  }
+
+  .brand-name {
+    font-size: 11px;
+  }
+
+  .brand-sub {
+    font-size: 9px;
+  }
+
+  .status {
+    font-size: 9px;
+    padding: 7px 9px;
+  }
+
+  .hero h1 {
+    font-size: 29px;
+  }
+}
+
+/* REDUCE MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
