@@ -350,3 +350,281 @@ footer span {
     font-size: 10px;
   }
 }
+
+/* =========================================
+   CIT TECH HUB - FUTURE INTERFACE
+========================================= */
+
+:root {
+  --primary: #1677FF;
+  --primary-light: #00D9FF;
+  --bg: #071426;
+  --text: #EAF4FF;
+  --muted: #9CB2CA;
+}
+
+/* Background */
+body {
+  background:
+    radial-gradient(ellipse at 15% 5%, #123C6A 0%, transparent 38%),
+    radial-gradient(ellipse at 90% 45%, #0B2850 0%, transparent 35%),
+    #071426;
+  color: var(--text);
+}
+
+/* Subtle tech grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    linear-gradient(#5AA9FF0A 1px, transparent 1px),
+    linear-gradient(90deg, #5AA9FF0A 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, #08182D 0%, #103D70 60%, #087CB8 100%);
+  border-bottom: 1px solid #39BFFF55;
+  box-shadow: 0 12px 45px #00152E88;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: -90px;
+  top: -140px;
+  border: 1px solid #66DFFF55;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 35px #66DFFF0A,
+    0 0 0 70px #66DFFF08,
+    0 0 70px #00BFFF33;
+  pointer-events: none;
+}
+
+.brand-mark {
+  background: linear-gradient(145deg, #1677FF, #00CFFF);
+  color: white;
+  box-shadow: 0 0 22px #00BFFF66;
+  border: 1px solid #9AEAFF;
+}
+
+.brand-name {
+  color: #FFFFFF;
+}
+
+.brand-sub {
+  color: #B8DFFF;
+}
+
+.status {
+  background: #00D9FF12;
+  border-color: #00D9FF66;
+  color: #B8F5FF;
+}
+
+.status i {
+  background: #00E6A8;
+  box-shadow: 0 0 12px #00E6A8;
+}
+
+/* Heading */
+.eyebrow {
+  color: #65E7FF;
+}
+
+.hero h1 {
+  text-shadow: 0 0 25px #37BFFF55;
+}
+
+.hero-copy p:last-child {
+  color: #B8D4F2;
+}
+
+.section-kicker {
+  color: #00D9FF;
+}
+
+.welcome h2 {
+  color: #FFFFFF;
+}
+
+.welcome p {
+  color: #9CB2CA;
+}
+
+/* Cards */
+.card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #142B46EE, #0B1C32F5);
+  border: 1px solid #4E8FCB55;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px #00000033,
+    inset 0 1px 0 #FFFFFF0D;
+  color: #EAF4FF;
+  transition: .25s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00D9FF, #1677FF, transparent);
+  opacity: .65;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  right: -70px;
+  bottom: -80px;
+  border-radius: 50%;
+  background: #00BFFF12;
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: #00D9FF;
+  box-shadow:
+    0 15px 35px #00152EAA,
+    0 0 22px #00BFFF25,
+    inset 0 1px 0 #FFFFFF18;
+}
+
+/* Uniform icons */
+.icon {
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17px;
+  margin-bottom: 17px;
+  font-size: 27px;
+  background: linear-gradient(145deg, #1677FF33, #00D9FF22);
+  border: 1px solid #47CFFF66;
+  color: #7DEBFF;
+  box-shadow: 0 0 18px #00BFFF22;
+}
+
+.icon-green,
+.icon-blue,
+.icon-amber,
+.icon-red,
+.icon-dark {
+  background: linear-gradient(145deg, #1677FF33, #00D9FF22);
+  color: #7DEBFF;
+}
+
+/* Card text */
+.card-title {
+  color: #F3F9FF;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.card-desc {
+  color: #9CB2CA;
+}
+
+.card-foot {
+  color: #48DFFF;
+}
+
+.card-foot b {
+  color: #00D9FF;
+}
+
+/* Install button */
+.install-btn {
+  background: linear-gradient(110deg, #1677FF, #00AFFF);
+  color: white;
+  border: 1px solid #71DFFF88;
+  box-shadow: 0 0 20px #168BFF44;
+}
+
+.install-btn:hover {
+  background: linear-gradient(110deg, #00AFFF, #00D9FF);
+}
+
+/* Help section */
+.help {
+  background: #102A45;
+  border: 1px solid #3D8CCB55;
+  border-radius: 18px;
+  color: #EAF4FF;
+}
+
+.help-icon {
+  background: linear-gradient(145deg, #1677FF, #00CFFF);
+  box-shadow: 0 0 15px #00BFFF55;
+}
+
+.help p {
+  color: #A9C0D8;
+}
+
+/* Footer */
+footer {
+  background: #06101F;
+  border-top: 1px solid #267CC455;
+  color: #D8E9FA;
+}
+
+footer span {
+  color: #55DFFF;
+}
+
+/* Keyboard accessibility */
+.card:focus-visible,
+.install-btn:focus-visible {
+  outline: 3px solid #00D9FF;
+  outline-offset: 4px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .card {
+    border-radius: 16px;
+  }
+
+  .icon {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    min-height: 54px;
+    font-size: 25px;
+  }
+
+  .hero::after {
+    right: -180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .install-btn {
+    transition: none;
+  }
+}
+
