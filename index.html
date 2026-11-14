@@ -1,599 +1,302 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#153d35">
-<meta name="description" content="CIT Support Portal">
-<title>CIT SUPPORT</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153d35">
+  <meta name="description" content="ระบบงานแผนกช่าง CIT">
+  <title>CIT Technician</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon-192.png">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
 
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" href="./assets/icon-192.png">
-<link rel="apple-touch-icon" href="./assets/icon-192.png">
-<link rel="stylesheet" href="./style.css">
+  <style>
+    [hidden] { display: none !important; }
 
-<style>
-[hidden] {
-  display: none !important;
-}
+    .pin-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(135deg,#102b28,#153d35,#1b5a50);
+    }
 
-.pin-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  box-sizing: border-box;
-  background: linear-gradient(135deg,#102b28,#153d35,#1b5a50);
-}
+    .pin-card {
+      background: white;
+      width: 100%;
+      max-width: 380px;
+      padding: 35px 25px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 15px 45px #0003;
+    }
 
-.pin-card {
-  background: white;
-  width: 100%;
-  max-width: 380px;
-  padding: 35px 25px;
-  border-radius: 22px;
-  text-align: center;
-  box-shadow: 0 15px 45px #0003;
-  box-sizing: border-box;
-}
+    .pin-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
 
-.pin-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
-}
+    .pin-card h1 {
+      color: #153d35;
+      margin: 5px 0;
+      font-size: 25px;
+    }
 
-.pin-card h1 {
-  color: #153d35;
-  margin: 5px 0;
-  font-size: 25px;
-}
+    .pin-card p {
+      color: #718078;
+      font-size: 14px;
+    }
 
-.pin-card p {
-  color: #718078;
-  font-size: 14px;
-}
+    .pin-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px;
+      margin: 20px 0 12px;
+      border: 2px solid #dce8e3;
+      border-radius: 12px;
+      font-size: 25px;
+      letter-spacing: 12px;
+      text-align: center;
+      outline: none;
+    }
 
-.role-button {
-  width: 100%;
-  padding: 17px;
-  margin-top: 12px;
-  border: 0;
-  border-radius: 12px;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: .2s;
-}
+    .pin-input:focus {
+      border-color: #25836b;
+    }
 
-.role-button:hover {
-  opacity: .85;
-  transform: translateY(-2px);
-}
+    .pin-button {
+      width: 100%;
+      padding: 15px;
+      background: #153d35;
+      color: white;
+      border: 0;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.admin-button {
-  background: #153d35;
-}
+    .pin-error {
+      color: #dc3545 !important;
+      min-height: 20px;
+      font-size: 13px !important;
+    }
 
-.tech-button {
-  background: #176b9b;
-}
+    .logout-btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 15px;
+      background: #e8eeee;
+      color: #153d35;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-.pin-input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 15px;
-  margin: 15px 0 12px;
-  border: 2px solid #dce8e3;
-  border-radius: 12px;
-  font-size: 24px;
-  letter-spacing: 8px;
-  text-align: center;
-  outline: none;
-}
-
-.pin-input:focus {
-  border-color: #25836b;
-}
-
-.pin-submit {
-  width: 100%;
-  padding: 15px;
-  background: #153d35;
-  color: white;
-  border: 0;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.back-button {
-  background: #e8eeee;
-  color: #153d35;
-  border: 0;
-  padding: 11px 20px;
-  margin-top: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.pin-error {
-  color: #dc3545 !important;
-  min-height: 20px;
-  font-size: 13px !important;
-}
-
-.logout-btn {
-  border: 0;
-  border-radius: 10px;
-  padding: 10px 15px;
-  background: #e8eeee;
-  color: #153d35;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.welcome {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-</style>
+    .welcome {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- ================================= -->
-<!-- หน้าเลือกประเภทผู้ใช้งาน -->
-<!-- ================================= -->
+  <!-- หน้า PIN -->
+  <section class="pin-screen" id="pinScreen">
+    <div class="pin-card">
+      <div class="pin-icon">🔧</div>
+      <h1>CIT TECHNICIAN</h1>
+      <p>ระบบงานแผนกช่าง</p>
+      <p>กรุณากรอกรหัส PIN เพื่อเข้าใช้งาน</p>
 
-<section class="pin-screen" id="pinScreen">
-
-  <div class="pin-card">
-
-    <div class="pin-icon">🔧</div>
-
-    <h1>CIT SUPPORT</h1>
-    <p>CREATIVE INNOVATION TECHNOLOGY</p>
-    <p>กรุณาเลือกประเภทผู้ใช้งาน</p>
-
-    <div id="roleSelection">
-
-      <button
-        class="role-button admin-button"
-        onclick="selectRole('admin')">
-        1. ADMIN
-      </button>
-
-      <button
-        class="role-button tech-button"
-        onclick="selectRole('technician')">
-        2. TECHNICIAN
-      </button>
-
-    </div>
-
-    <!-- ช่องกรอกรหัส -->
-
-    <div id="passwordArea" hidden>
-
-      <h3 id="roleTitle" style="color:#153d35;"></h3>
-
-      <form id="loginForm">
-
+      <form id="pinForm">
         <input
           id="pinInput"
           class="pin-input"
           type="password"
+          inputmode="numeric"
+          pattern="[0-9]{4}"
+          maxlength="4"
           placeholder="••••"
           autocomplete="off"
           required
         >
-
-        <button class="pin-submit" type="submit">
+        <button class="pin-button" type="submit">
           เข้าสู่ระบบ
         </button>
-
       </form>
 
-      <button class="back-button" onclick="backToRole()">
-        ← กลับ
-      </button>
-
+      <p class="pin-error" id="pinError"></p>
+      <p style="font-size:11px;margin-top:20px;">
+        CREATIVE INNOVATION TECHNOLOGY CO., LTD.
+      </p>
     </div>
+  </section>
 
-    <p class="pin-error" id="pinError"></p>
+  <!-- เนื้อหาหลังผ่าน PIN -->
+  <div id="portalContent" hidden>
 
-    <p style="font-size:11px;margin-top:20px;">
-      CREATIVE INNOVATION TECHNOLOGY CO., LTD.
-    </p>
+    <header class="hero">
+      <div class="topline">
+        <div class="brand">
+          <div class="brand-mark">CIT</div>
+          <div>
+            <div class="brand-name">CREATIVE INNOVATION</div>
+            <div class="brand-sub">TECHNOLOGY CO., LTD.</div>
+          </div>
+        </div>
+        <span class="status"><i></i> TECHNICIAN</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow">INTERNAL SERVICE PORTAL</p>
+        <h1>ระบบงานแผนกช่าง</h1>
+        <p>ศูนย์รวมเอกสารและงานบริการ CIT</p>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <section class="welcome">
+        <div>
+          <span class="section-kicker">QUICK ACCESS</span>
+          <h2>เลือกเมนูที่ต้องการ</h2>
+          <p>เอกสารและระบบงานสำหรับช่าง</p>
+        </div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button id="installBtn" class="install-btn" hidden>
+            ＋ ติดตั้งบนมือถือ
+          </button>
+          <button id="logoutBtn" class="logout-btn">
+            ออกจากระบบ
+          </button>
+        </div>
+      </section>
+
+      <section class="cards" aria-label="เมนูแผนกช่าง">
+
+        <!-- เมนู 1 -->
+        <a class="card"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSds7ZZmtMvBXN-AFuH0RIVGrhw3p2vGXr4zHj_ggMARlRWL5A/viewform?usp=sharing"
+           target="_blank" rel="noopener">
+          <span class="icon icon-amber">🛠️</span>
+          <span class="card-title">เอกสารทำ PM</span>
+          <span class="card-desc">Preventive Maintenance</span>
+          <span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
+        </a>
+
+        <!-- เมนู 2 -->
+        <a class="card"
+           href="https://drive.google.com/drive/folders/1Iu1eX9kAYmLXPEU52ql0tqyxAZVcmRX7?usp=drive_link"
+           target="_blank" rel="noopener">
+          <span class="icon icon-red">📄</span>
+          <span class="card-title">PDF PM</span>
+          <span class="card-desc">คู่มือและเอกสาร PM</span>
+          <span class="card-foot">เปิด Google Drive <b>↗</b></span>
+        </a>
+
+        <!-- เมนู 3 -->
+        <a class="card card-wide"
+           href="https://cit-service-calendar.netlify.app/"
+           target="_blank" rel="noopener">
+          <span class="icon icon-blue">📅</span>
+          <span class="card-title">ปฏิทินงานบริการ CIT</span>
+          <span class="card-desc">CIT Service Calendar</span>
+          <span class="card-foot">เปิดระบบปฏิทิน <b>↗</b></span>
+        </a>
+
+      </section>
+
+      <section class="help">
+        <div class="help-icon">i</div>
+        <div>
+          <strong>ใช้งานบนโทรศัพท์</strong>
+          <p>เปิดเว็บไซต์ผ่าน Chrome หรือ Safari แล้วเลือกเพิ่มไปยังหน้าจอหลัก</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <strong>CREATIVE INNOVATION TECHNOLOGY CO., LTD.</strong>
+      <span>TECHNICIAN DOCUMENT PORTAL</span>
+    </footer>
 
   </div>
 
-</section>
-
-
-<!-- ================================= -->
-<!-- หน้าเว็บช่าง -->
-<!-- ================================= -->
-
-<div id="portalContent" hidden>
-
-  <header class="hero">
-
-    <div class="topline">
-
-      <div class="brand">
-
-        <div class="brand-mark">CIT</div>
-
-        <div>
-          <div class="brand-name">CREATIVE INNOVATION</div>
-          <div class="brand-sub">TECHNOLOGY CO., LTD.</div>
-        </div>
-
-      </div>
-
-      <span class="status">
-        <i></i> TECHNICIAN
-      </span>
-
-    </div>
-
-    <div class="hero-copy">
-
-      <p class="eyebrow">INTERNAL SERVICE PORTAL</p>
-      <h1>ระบบงานแผนกช่าง</h1>
-      <p>ศูนย์รวมเอกสารและงานบริการ CIT</p>
-
-    </div>
-
-  </header>
-
-
-  <main class="container">
-
-    <section class="welcome">
-
-      <div>
-        <span class="section-kicker">QUICK ACCESS</span>
-        <h2>เลือกเมนูที่ต้องการ</h2>
-        <p>เอกสารและระบบงานสำหรับช่าง</p>
-      </div>
-
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-
-        <button id="installBtn" class="install-btn" hidden>
-          ＋ ติดตั้งบนมือถือ
-        </button>
-
-        <button id="logoutBtn" class="logout-btn">
-          ออกจากระบบ
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <section class="cards" aria-label="เมนูแผนกช่าง">
-
-      <!-- เมนู 1 PM -->
-
-      <a class="card"
-         href="https://docs.google.com/forms/d/e/1FAIpQLSds7ZZmtMvBXN-AFuH0RIVGrhw3p2vGXr4zHj_ggMARlRWL5A/viewform?usp=sharing"
-         target="_blank" rel="noopener">
-
-        <span class="icon icon-amber">🛠️</span>
-        <span class="card-title">เอกสารทำ PM</span>
-        <span class="card-desc">Preventive Maintenance</span>
-        <span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
-
-      </a>
-
-
-      <!-- เมนู 2 PDF PM -->
-
-      <a class="card"
-         href="https://drive.google.com/drive/folders/1Iu1eX9kAYmLXPEU52ql0tqyxAZVcmRX7?usp=drive_link"
-         target="_blank" rel="noopener">
-
-        <span class="icon icon-red">📄</span>
-        <span class="card-title">PDF PM</span>
-        <span class="card-desc">คู่มือและเอกสาร PM</span>
-        <span class="card-foot">เปิด Google Drive <b>↗</b></span>
-
-      </a>
-
-
-      <!-- เมนู 3 ปฏิทิน -->
-
-      <a class="card card-wide"
-         href="https://cit-service-calendar.netlify.app/"
-         target="_blank" rel="noopener">
-
-        <span class="icon icon-blue">📅</span>
-        <span class="card-title">ปฏิทินงานบริการ CIT</span>
-        <span class="card-desc">CIT Service Calendar</span>
-        <span class="card-foot">เปิดระบบปฏิทิน <b>↗</b></span>
-
-      </a>
-
-    </section>
-
-
-    <section class="help">
-
-      <div class="help-icon">i</div>
-
-      <div>
-        <strong>ใช้งานบนโทรศัพท์</strong>
-        <p>
-          เปิดเว็บไซต์ผ่าน Chrome หรือ Safari
-          แล้วเลือกเพิ่มไปยังหน้าจอหลัก
-        </p>
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <footer>
-    <strong>CREATIVE INNOVATION TECHNOLOGY CO., LTD.</strong>
-    <span>TECHNICIAN DOCUMENT PORTAL</span>
-  </footer>
-
-</div>
-
-
-<!-- ================================= -->
-<!-- JAVASCRIPT -->
-<!-- ================================= -->
-
-<script>
-
-// =====================================
-// ตั้งค่ารหัสผ่าน
-// =====================================
-
-const ADMIN_PASSWORD = "5678";
-const TECHNICIAN_PIN = "1234";
-
-// URL ระบบ Admin เดิม
-const ADMIN_URL =
-  "https://tenhuknutthaha-a11y.github.io/cit-technician-portal/";
-
-// =====================================
-// ตัวแปรระบบ
-// =====================================
-
-let selectedRole = "";
-
-const pinScreen = document.getElementById("pinScreen");
-const portalContent = document.getElementById("portalContent");
-const passwordArea = document.getElementById("passwordArea");
-const roleSelection = document.getElementById("roleSelection");
-const pinInput = document.getElementById("pinInput");
-const pinError = document.getElementById("pinError");
-
-// =====================================
-// เลือก ADMIN / TECHNICIAN
-// =====================================
-
-function selectRole(role) {
-
-  selectedRole = role;
-
-  roleSelection.hidden = true;
-  passwordArea.hidden = false;
-
-  document.getElementById("roleTitle").textContent =
-    role === "admin"
-      ? "ADMIN PASSWORD"
-      : "TECHNICIAN PIN";
-
-  pinInput.value = "";
-  pinError.textContent = "";
-
-  pinInput.focus();
-
-}
-
-// =====================================
-// กลับไปหน้าเลือกประเภท
-// =====================================
-
-function backToRole() {
-
-  passwordArea.hidden = true;
-  roleSelection.hidden = false;
-
-  pinInput.value = "";
-  pinError.textContent = "";
-
-  selectedRole = "";
-
-}
-
-// =====================================
-// แสดงหน้าเว็บช่าง
-// =====================================
-
-function showPortal() {
-
-  pinScreen.hidden = true;
-  portalContent.hidden = false;
-
-}
-
-// =====================================
-// ออกจากระบบ
-// =====================================
-
-function showLogin() {
-
-  sessionStorage.removeItem("citTechnicianLogin");
-
-  portalContent.hidden = true;
-  pinScreen.hidden = false;
-
-  passwordArea.hidden = true;
-  roleSelection.hidden = false;
-
-  pinInput.value = "";
-  pinError.textContent = "";
-
-  selectedRole = "";
-
-}
-
-// =====================================
-// ตรวจสอบ Login
-// =====================================
-
-document.getElementById("loginForm").addEventListener(
-  "submit",
-  function(event) {
-
-    event.preventDefault();
-
-    const password = pinInput.value;
-
-    // ADMIN
-    if (selectedRole === "admin") {
-
-      if (password === ADMIN_PASSWORD) {
-
-        pinError.textContent = "";
-
-        window.location.href = ADMIN_URL;
-
-      } else {
-
-        pinError.textContent =
-          "รหัส ADMIN ไม่ถูกต้อง";
-
-        pinInput.value = "";
-        pinInput.focus();
-
-      }
-
-      return;
-
+  <script>
+    const TECHNICIAN_PIN = "1234";
+
+    const pinScreen = document.getElementById("pinScreen");
+    const portalContent = document.getElementById("portalContent");
+    const pinForm = document.getElementById("pinForm");
+    const pinInput = document.getElementById("pinInput");
+    const pinError = document.getElementById("pinError");
+
+    function showPortal() {
+      pinScreen.hidden = true;
+      portalContent.hidden = false;
     }
 
-    // TECHNICIAN
-    if (selectedRole === "technician") {
+    function showLogin() {
+      sessionStorage.removeItem("citTechnicianLogin");
+      portalContent.hidden = true;
+      pinScreen.hidden = false;
+      pinInput.value = "";
+      pinError.textContent = "";
+      pinInput.focus();
+    }
 
-      if (password === TECHNICIAN_PIN) {
+    if (sessionStorage.getItem("citTechnicianLogin") === "true") {
+      showPortal();
+    }
 
-        sessionStorage.setItem(
-          "citTechnicianLogin",
-          "true"
-        );
+    pinForm.addEventListener("submit", function(event) {
+      event.preventDefault();
 
+      if (pinInput.value === TECHNICIAN_PIN) {
+        sessionStorage.setItem("citTechnicianLogin", "true");
         pinError.textContent = "";
-
         showPortal();
-
       } else {
-
-        pinError.textContent =
-          "PIN TECHNICIAN ไม่ถูกต้อง";
-
+        pinError.textContent = "PIN ไม่ถูกต้อง กรุณาลองอีกครั้ง";
         pinInput.value = "";
         pinInput.focus();
-
       }
+    });
 
+    document.getElementById("logoutBtn").addEventListener("click", showLogin);
+
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installBtn.hidden = false;
+    });
+
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      installBtn.hidden = true;
+    });
+
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(console.warn);
+      });
     }
-
-  }
-);
-
-
-// =====================================
-// ตรวจสอบสถานะ Login ช่าง
-// =====================================
-
-if (
-  sessionStorage.getItem("citTechnicianLogin") === "true"
-) {
-
-  showPortal();
-
-}
-
-
-// =====================================
-// ปุ่มออกจากระบบ
-// =====================================
-
-document.getElementById("logoutBtn").addEventListener(
-  "click",
-  showLogin
-);
-
-
-// =====================================
-// ติดตั้ง PWA
-// =====================================
-
-let deferredPrompt;
-
-const installBtn = document.getElementById("installBtn");
-
-window.addEventListener("beforeinstallprompt", (event) => {
-
-  event.preventDefault();
-
-  deferredPrompt = event;
-
-  installBtn.hidden = false;
-
-});
-
-installBtn.addEventListener("click", async () => {
-
-  if (!deferredPrompt) return;
-
-  deferredPrompt.prompt();
-
-  await deferredPrompt.userChoice;
-
-  deferredPrompt = null;
-
-  installBtn.hidden = true;
-
-});
-
-
-// =====================================
-// SERVICE WORKER
-// =====================================
-
-if (
-  "serviceWorker" in navigator &&
-  location.protocol.startsWith("http")
-) {
-
-  window.addEventListener("load", () => {
-
-    navigator.serviceWorker
-      .register("./sw.js")
-      .catch(console.warn);
-
-  });
-
-}
-
-</script>
+  </script>
 
 </body>
 </html>
