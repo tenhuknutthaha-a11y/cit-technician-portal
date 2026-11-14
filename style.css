@@ -603,3 +603,73 @@ footer span {
     animation-duration: .01ms !important;
   }
 }
+
+/* =====================================
+   CIT FUTURE PRO - FORCE ICON SIZE
+   ===================================== */
+
+.cards .card .icon {
+  display: inline-flex !important;
+
+  width: 60px !important;
+  height: 60px !important;
+
+  min-width: 60px !important;
+  min-height: 60px !important;
+
+  max-width: 60px !important;
+  max-height: 60px !important;
+
+  flex: 0 0 60px !important;
+  aspect-ratio: 1 / 1 !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: flex-start !important;
+
+  padding: 0 !important;
+  margin: 0 0 17px 0 !important;
+
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+
+  font-family:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji",
+    sans-serif !important;
+
+  font-size: 26px !important;
+  line-height: 1 !important;
+  text-align: center !important;
+
+  border-radius: 16px !important;
+}
+
+/* ทุกสีใช้กรอบแบบเดียวกัน */
+.cards .card .icon-green,
+.cards .card .icon-blue,
+.cards .card .icon-amber,
+.cards .card .icon-red,
+.cards .card .icon-dark {
+  width: 60px !important;
+  height: 60px !important;
+  flex: 0 0 60px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 700px) {
+  .cards .card .icon {
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    min-height: 54px !important;
+    max-width: 54px !important;
+    max-height: 54px !important;
+    flex: 0 0 54px !important;
+    font-size: 24px !important;
+  }
+}
