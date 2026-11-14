@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153d35">
+  <meta name="description" content="ระบบเอกสารและตรวจสอบการปฏิบัติงานแผนกช่าง">
+  <title>แผนกช่าง | CIT</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon-192.png">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="topline">
+      <div class="brand">
+        <div class="brand-mark" aria-label="CIT logo placeholder">CIT</div>
+        <div><div class="brand-name">CREATIVE INNOVATION</div><div class="brand-sub">TECHNOLOGY CO., LTD.</div></div>
+      </div>
+      <span class="status"><i></i> TECHNICIAN</span>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow">INTERNAL SERVICE PORTAL</p>
+      <h1>ระบบงานแผนกช่าง</h1>
+      <p>ศูนย์รวมเอกสาร แบบฟอร์มตรวจสอบ และงานบำรุงรักษา</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div><span class="section-kicker">QUICK ACCESS</span><h2>เลือกเมนูที่ต้องการ</h2><p>กดเพื่อเปิดเอกสารหรือแบบฟอร์มที่เกี่ยวข้อง</p></div>
+      <button id="installBtn" class="install-btn" hidden>＋ ติดตั้งบนมือถือ</button>
+    </section>
+
+    <section class="cards" aria-label="เมนูแผนกช่าง">
+      <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSeYTGTHUg_OSxv_eNnAuDgRADi4tAqFAxuSyDA4ZqBb2209Ow/viewform?usp=sharing&ouid=112341327912278868101" target="_blank" rel="noopener">
+        <span class="icon icon-green">🚗</span><span class="card-title">เอกสารเช็ครถ</span><span class="card-desc">Vehicle Checklist</span><span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
+      </a>
+      <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLScoQ-vYuujusargwWVnCnw8kDaeKRem4leYNa9PkT_YniNaTA/viewform?usp=sharing&ouid=112341327912278868101" target="_blank" rel="noopener">
+        <span class="icon icon-blue">👕</span><span class="card-title">ตรวจการแต่งกาย</span><span class="card-desc">Uniform Checklist</span><span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
+      </a>
+      <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSds7ZZmtMvBXN-AFuH0RIVGrhw3p2vGXr4zHj_ggMARlRWL5A/viewform?usp=sharing" target="_blank" rel="noopener">
+        <span class="icon icon-amber">🛠️</span><span class="card-title">เอกสารทำ PM</span><span class="card-desc">Preventive Maintenance</span><span class="card-foot">เปิดแบบฟอร์ม <b>↗</b></span>
+      </a>
+      <a class="card" href="https://drive.google.com/drive/folders/1Iu1eX9kAYmLXPEU52ql0tqyxAZVcmRX7?usp=drive_link" target="_blank" rel="noopener">
+        <span class="icon icon-red">📄</span><span class="card-title">PDF PM</span><span class="card-desc">คู่มือและเอกสาร PM</span><span class="card-foot">เปิด Google Drive <b>↗</b></span>
+      </a>
+      <a class="card card-wide" href="https://drive.google.com/drive/folders/1tW5T13xAnEb-y6BBX1lzD8NepqSZha9x?usp=drive_link" target="_blank" rel="noopener">
+        <span class="icon icon-dark">📁</span><span class="card-title">คลังเอกสารแผนกช่าง</span><span class="card-desc">รวมเอกสารและไฟล์งานทั้งหมด</span><span class="card-foot">เปิด Google Drive <b>↗</b></span>
+      </a>
+    </section>
+
+    <section class="help">
+      <div class="help-icon">i</div><div><strong>ใช้งานบนโทรศัพท์</strong><p>เปิดเว็บไซต์นี้ผ่าน Chrome หรือ Safari แล้วเลือก “เพิ่มไปยังหน้าจอหลัก” เพื่อสร้างไอคอนเข้าใช้งานเหมือนแอป</p></div>
+    </section>
+  </main>
+
+  <footer><strong>CREATIVE INNOVATION TECHNOLOGY CO., LTD.</strong><span>TECHNICIAN DOCUMENT PORTAL</span></footer>
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault(); deferredPrompt = event; installBtn.hidden = false;
+    });
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; installBtn.hidden = true;
+    });
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.warn));
+    }
+  </script>
+</body>
+</html>
